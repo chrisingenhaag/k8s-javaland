@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-envvalues
+data:
+  CRONN_JAVALAND: '2020'
+  CRONN_WORKSHOP: 'Kubernetes'

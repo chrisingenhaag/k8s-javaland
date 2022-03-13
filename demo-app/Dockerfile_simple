@@ -1,0 +1,5 @@
+FROM openjdk:11-jre-slim
+
+COPY build/libs/demo-app-*.jar /app/demo-app.jar
+
+ENTRYPOINT ["java","-jar","/app/demo-app.jar"]

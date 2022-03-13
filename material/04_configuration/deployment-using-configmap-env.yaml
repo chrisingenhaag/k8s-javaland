@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-deployment
+  labels:
+    app: demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo-app
+        image: ingenhaag/demo-app:latest
+        ports:
+        - containerPort: 8080
+        # THIS for using all configmap entries as env vars
+        envFrom:
+        - configMapRef:
+            name: application-config
+
+        # This for defining single env vars out of an configmap
+        #env:
+        #- name: JAVALAND
+        #  valueFrom:
+        #    configMapKeyRef:
+        #      name: application-config
+        #      key: JAVALAND

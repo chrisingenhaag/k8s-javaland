@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-app-deployment
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: christian.rancher-k8s.cronn.de
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: demo-app-service-clusterip
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+        - christian.rancher-k8s.cronn.de
+      secretName: demo-app-tls

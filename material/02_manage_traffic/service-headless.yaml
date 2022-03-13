@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-app-service-headless
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: demo-app
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080

@@ -22,12 +22,12 @@ spec:
         # THIS for using all configmap entries as env vars
         envFrom:
         - configMapRef:
-            name: application-config
+            name: configmap-envvalues
 
         # This for defining single env vars out of an configmap
         #env:
         #- name: JAVALAND
         #  valueFrom:
         #    configMapKeyRef:
-        #      name: application-config
+        #      name: application-envvalues
         #      key: JAVALAND
